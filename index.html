@@ -31,6 +31,7 @@
       --color-analytics:#4dd0e1;
       --color-domain:#ffd54f;
       --color-it:#00e5ff;
+      --color-onboarding:#a8ff78;
       --color-marketing:#ff7043;
       --color-ai:#d372ff;
       --stage-start:#00e5ff;
@@ -518,6 +519,16 @@
       background: linear-gradient(180deg, rgba(255, 213, 79, 0.15), transparent);
       border-top: 2px solid rgba(255, 213, 79, 0.4);
     }
+
+    .card[data-block="onboarding"] {
+      border-top-color: var(--color-onboarding);
+      --accent-color: var(--color-onboarding);
+    }
+    .card[data-block="onboarding"]::before {
+      background: radial-gradient(ellipse at 80% 0%, rgba(168,255,120,0.13) 0%, transparent 60%);
+    }
+    .card[data-block="onboarding"] .icon { background: rgba(168,255,120,0.15); border-color: rgba(168,255,120,0.3); }
+    .card[data-block="onboarding"] .small-fill { background: linear-gradient(90deg, var(--color-onboarding), #78ffd6); }
 
     .card[data-block="it_basics"] {
       border-top-color: var(--color-it);
@@ -1315,11 +1326,11 @@
         <div>
           <div class="kicker">Skill map · mobile-friendly html · quest-driven learning</div>
           <h1><span class="grad">Roadmap / Mindmap</span><br>Project & Product Assistant</h1>
-          <p class="sub">Карта развития с последовательной цепью задач: 76 квестов в оптимальном порядке обучения от основ к специализации. Каждый следующий квест открывается после закрытия предыдущего. Разблокируйте новые уровни сложности по мере освоения. Прогресс сохраняется.</p>
+          <p class="sub">Карта развития с последовательной цепью задач: 86 квестов в оптимальном порядке обучения от основ к специализации. Каждый следующий квест открывается после закрытия предыдущего. Разблокируйте новые уровни сложности по мере освоения. Прогресс сохраняется.</p>
           <div class="stats">
             <div class="mini">
               <div class="lbl">Закрыто пунктов</div>
-              <div class="num" id="doneCount">0 / 76</div>
+              <div class="num" id="doneCount">0 / 86</div>
             </div>
             <div class="mini">
               <div class="lbl">Этап</div>
@@ -1327,7 +1338,7 @@
             </div>
             <div class="mini">
               <div class="lbl">Блоков сданы</div>
-              <div class="num" id="passCount">0 / 9</div>
+              <div class="num" id="passCount">0 / 10</div>
             </div>
           </div>
         </div>
@@ -1369,7 +1380,7 @@
       <section id="quest">
         <div class="quest-header">
           <h2>Твой путь</h2>
-          <div class="quest-counter" id="questCounter">Шаг 1 из 76</div>
+          <div class="quest-counter" id="questCounter">Шаг 1 из 86</div>
         </div>
 
         <div class="quest-completed" onclick="toggleCompletedList(event)">
@@ -1411,6 +1422,16 @@
 <script>
 // Quest Line Sequence
 const questLine = [
+  { block: 'onboarding', idx: 0, stage: 'Старт' },
+  { block: 'onboarding', idx: 1, stage: 'Старт' },
+  { block: 'onboarding', idx: 2, stage: 'Старт' },
+  { block: 'onboarding', idx: 3, stage: 'Старт' },
+  { block: 'onboarding', idx: 4, stage: 'Старт' },
+  { block: 'onboarding', idx: 5, stage: 'Старт' },
+  { block: 'onboarding', idx: 6, stage: 'Старт' },
+  { block: 'onboarding', idx: 7, stage: 'Старт' },
+  { block: 'onboarding', idx: 8, stage: 'Старт' },
+  { block: 'onboarding', idx: 9, stage: 'Старт' },
   { block: 'theory', idx: 0, stage: 'Старт' },
   { block: 'theory', idx: 11, stage: 'Старт' },
   { block: 'it_basics', idx: 0, stage: 'Старт' },
@@ -1488,6 +1509,35 @@ const questLine = [
   { block: 'domain', idx: 4, stage: 'Финтех' },
   { block: 'domain', idx: 5, stage: 'Финтех' },
 ];
+
+const onboardingBlock = {
+  id: 'onboarding', icon: '🚀', title: 'Вход в профессию',
+  desc: 'Нулевой блок для тех, кто смотрит в сторону IT и ещё не понимает, с чего начать. Никаких сложных инструментов — только базовое понимание: кто работает в IT, как устроен процесс и что ты будешь делать каждый день.',
+  items: [
+    'Что такое IT-компания изнутри: из каких отделов состоит (Product, Tech, Design, QA, Marketing, Sales, Support) и кто за что отвечает.',
+    'Роли в IT: чем PM отличается от PO, что делает BA, QA, Dev, Designer — и куда вписывается Project/Product Assistant.',
+    'Как выглядит задача от идеи до результата: жизненный цикл, этапы, кто участвует и почему задачи застревают.',
+    '50 слов, которые нужно знать в первый день: бэклог, спринт, скоуп, релиз, баг, фича, MVP, KPI, Agile, Scrum, Kanban, API, CRM, LTV и другие.',
+    'Как выглядит рабочий день Junior Assistant: стендап, трекер задач, документация, коммуникации и подведение итогов.',
+    'Как правильно написать сообщение коллеге: структура (контекст → просьба → срок → что уже сделано) и примеры плохого/хорошего.',
+    'Что такое задача и как её принять не растерявшись: 5 вопросов, которые снимают 80% неопределённости (что, зачем, кому, когда, что уже есть).',
+    'Инструменты, которые используются в работе: Jira / Notion / Trello, Confluence, Slack, Google Sheets, Figma, Zoom.',
+    'Что такое продукт и почему всё вокруг него крутится: от боли пользователя до релиза — цикл жизни продукта на примерах.',
+    'Твои первые 7 дней в роли: что должен уметь Junior Assistant к концу первой недели и чего НЕ стоит делать новичку.'
+  ],
+  tasks: [
+    'Нарисовать схему IT-компании: минимум 6 отделов, для каждого — одно предложение про его роль.',
+    'Создать пространство в Notion, добавить страницу «Мои задачи» с таблицей: Задача | Статус | Дедлайн | Комментарий.'
+  ],
+  exam: {
+    format: 'Вводный зачёт',
+    points: [
+      'Объяснить своими словами: чем PM отличается от PO, что такое бэклог и жизненный цикл задачи.',
+      'Написать правильное рабочее сообщение коллеге по заданной ситуации.',
+      'Зачёт: ориентируется в базовых ролях и терминах, умеет принять задачу и задать нужные вопросы.'
+    ]
+  }
+};
 
 // Block Data
 const theoryBlock = {
@@ -1775,6 +1825,7 @@ const bonusBlock = {
 };
 
 const blockDataMap = {
+  onboarding: onboardingBlock,
   theory: theoryBlock,
   it_basics: itBasicsBlock,
   base: baseBlock,
@@ -1788,11 +1839,12 @@ const blockDataMap = {
 };
 
 const allBlocksData = [
+  onboardingBlock,
   theoryBlock, itBasicsBlock, baseBlock, commsBlock, projectBlock,
   productBlock, marketingBlock, analyticsBlock, domainBlock, bonusBlock
 ];
 
-const blockOrder = ['theory', 'it_basics', 'base', 'comms', 'project', 'product', 'marketing', 'analytics', 'domain'];
+const blockOrder = ['onboarding', 'theory', 'it_basics', 'base', 'comms', 'project', 'product', 'marketing', 'analytics', 'domain'];
 
 function blockTemplate(block) {
   const isBonus = block.id === 'ai_bonus';
