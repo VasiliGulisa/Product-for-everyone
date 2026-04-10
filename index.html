@@ -428,14 +428,15 @@
     /* Card Styles with Collapse Support */
     .card{
       position:relative;
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.1);
-      border-top:2px solid rgba(255,255,255,.25);
-      border-radius:24px;
-      padding:20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-      transition:all .3s ease;
-      animation: card-fade-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-left:3px solid rgba(255,255,255,.15);
+      border-radius:18px;
+      padding:0;
+      overflow:hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+      animation: card-fade-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
 
     @keyframes card-fade-in {
@@ -451,7 +452,7 @@
     .card:nth-child(6) { animation-delay: 0.5s; }
 
     .card[data-block="theory"] {
-      border-top-color: var(--color-theory);
+      border-left-color: var(--color-theory);
       --accent-color: var(--color-theory);
     }
 
@@ -461,7 +462,7 @@
     }
 
     .card[data-block="base"] {
-      border-top-color: var(--color-base);
+      border-left-color: var(--color-base);
       --accent-color: var(--color-base);
     }
 
@@ -471,7 +472,7 @@
     }
 
     .card[data-block="project"] {
-      border-top-color: var(--color-project);
+      border-left-color: var(--color-project);
       --accent-color: var(--color-project);
     }
 
@@ -481,7 +482,7 @@
     }
 
     .card[data-block="comms"] {
-      border-top-color: var(--color-comms);
+      border-left-color: var(--color-comms);
       --accent-color: var(--color-comms);
     }
 
@@ -491,7 +492,7 @@
     }
 
     .card[data-block="product"] {
-      border-top-color: var(--color-product);
+      border-left-color: var(--color-product);
       --accent-color: var(--color-product);
     }
 
@@ -501,7 +502,7 @@
     }
 
     .card[data-block="analytics"] {
-      border-top-color: var(--color-analytics);
+      border-left-color: var(--color-analytics);
       --accent-color: var(--color-analytics);
     }
 
@@ -511,7 +512,7 @@
     }
 
     .card[data-block="domain"] {
-      border-top-color: var(--color-domain);
+      border-left-color: var(--color-domain);
       --accent-color: var(--color-domain);
     }
 
@@ -521,7 +522,7 @@
     }
 
     .card[data-block="onboarding"] {
-      border-top-color: var(--color-onboarding);
+      border-left-color: var(--color-onboarding);
       --accent-color: var(--color-onboarding);
     }
     .card[data-block="onboarding"]::before {
@@ -531,7 +532,7 @@
     .card[data-block="onboarding"] .small-fill { background: linear-gradient(90deg, var(--color-onboarding), #78ffd6); }
 
     .card[data-block="it_basics"] {
-      border-top-color: var(--color-it);
+      border-left-color: var(--color-it);
       --accent-color: var(--color-it);
     }
 
@@ -541,7 +542,7 @@
     }
 
     .card[data-block="marketing"] {
-      border-top-color: var(--color-marketing);
+      border-left-color: var(--color-marketing);
       --accent-color: var(--color-marketing);
     }
 
@@ -562,9 +563,9 @@
     }
 
     .card.bonus-card {
-      background:linear-gradient(180deg, rgba(211,114,255,.1), rgba(255,255,255,.02));
-      border-color: rgba(211,114,255,0.3);
-      border-top-color: var(--color-ai);
+      background: rgba(211,114,255,.05);
+      border-color: rgba(211,114,255,0.2);
+      border-left-color: var(--color-ai);
     }
 
     .card.bonus-card::before {
@@ -573,31 +574,31 @@
     }
 
     .card.collapsed {
-      padding-bottom: 20px;
+      background: rgba(255,255,255,.025);
     }
 
     .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 50px rgba(0,0,0,0.3);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     }
 
     .branch-header{
       display:flex;
-      align-items:flex-start;
+      align-items:center;
       justify-content:space-between;
       gap:12px;
-      margin-bottom:14px;
+      margin-bottom:0;
       cursor:pointer;
       user-select:none;
-      padding:4px;
-      border-radius:8px;
+      padding:16px 20px;
+      border-radius:0;
       transition:background .2s ease;
       position: relative;
       z-index: 1;
     }
 
     .branch-header:hover {
-      background:rgba(255,255,255,.04);
+      background:rgba(255,255,255,.05);
     }
 
     .chevron{
@@ -615,6 +616,44 @@
 
     .card.collapsed .chevron {
       transform:rotate(-90deg);
+    }
+    .accordion-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .accordion-pct {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 32px;
+      text-align: right;
+      letter-spacing: 0.03em;
+    }
+    .accordion-count {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 999px;
+      padding: 2px 8px;
+    }
+    .accordion-mini-bar {
+      width: 48px;
+      height: 4px;
+      background: rgba(255,255,255,.1);
+      border-radius: 999px;
+      overflow: hidden;
+      display: none;
+    }
+    .card.collapsed .accordion-mini-bar { display: block; }
+    .accordion-mini-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-color, var(--accent)), var(--accent2));
+      transition: width .4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .completion-badge{
@@ -662,13 +701,13 @@
     }
 
     .icon{
-      width:46px;
-      height:46px;
-      border-radius:14px;
+      width:42px;
+      height:42px;
+      border-radius:12px;
       display:grid;
       place-items:center;
       background:rgba(110,168,255,.14);
-      font-size:22px;
+      font-size:20px;
       border:2px solid rgba(110,168,255,.22);
       flex-shrink:0;
       transition: all 0.3s ease;
@@ -690,7 +729,7 @@
     .desc{margin:0;color:var(--muted);font-size:14px;line-height:1.45}
     .pct{font-weight:800;font-size:20px;color:#dce8ff;line-height:1}
 
-    .collapsible-content{
+    .collapsible-content{ padding:0 20px 20px;
       max-height:10000px;
       overflow:hidden;
       transition:max-height .3s ease, opacity .3s ease;
@@ -699,13 +738,19 @@
       z-index: 1;
     }
 
-    .card.collapsed .collapsible-content{
+    .collapsible-content-divider {
+      height: 1px;
+      background: rgba(255,255,255,.07);
+      margin: 0 20px;
+    }
+    .card.collapsed .collapsible-content-divider { display: none; }
+    .card.collapsed .collapsible-content{ padding:0 20px 20px;
       max-height:0;
       opacity:0;
       pointer-events:none;
     }
 
-    .block-progress{margin:16px 0 18px}
+    .block-progress{margin:0 0 18px}
 
     .small-track{
       height:10px;
@@ -991,7 +1036,46 @@
     .quest-stage-badge[data-stage="Аналитика"] { background: var(--stage-analytics); }
     .quest-stage-badge[data-stage="Финтех"] { background: var(--stage-fintech); }
 
-    .quest-step-number {
+    
+/* HOW TO BOX */
+.howto-box {
+  margin: 0 0 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(110, 168, 255, 0.25);
+  background: rgba(110, 168, 255, 0.06);
+  overflow: hidden;
+  transition: border-color .2s ease;
+}
+.howto-box.howto-open { border-color: rgba(110, 168, 255, 0.45); }
+.howto-toggle {
+  display: flex; align-items: center; gap: 8px;
+  width: 100%; padding: 12px 16px;
+  background: none; border: none; cursor: pointer;
+  color: var(--accent); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.02em; text-align: left;
+  transition: background .2s;
+}
+.howto-toggle:hover { background: rgba(110,168,255,0.08); }
+.howto-toggle-icon { font-size: 16px; flex-shrink: 0; }
+.howto-toggle-label { flex: 1; }
+.howto-arrow {
+  font-size: 18px; line-height: 1; color: var(--muted);
+  transition: transform .25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.howto-box.howto-open .howto-arrow { transform: rotate(90deg); }
+.howto-content {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .3s ease;
+  padding: 0 16px; color: var(--muted);
+  font-size: 13px; line-height: 1.7;
+}
+.howto-box.howto-open .howto-content { max-height: 500px; padding: 0 16px 14px; }
+.howto-content ol { margin: 4px 0 0; padding-left: 18px; }
+.howto-content li { margin-bottom: 6px; }
+.howto-content a { color: var(--accent); text-decoration: none; }
+.howto-content a:hover { text-decoration: underline; }
+
+.quest-step-number {
       font-size: 14px;
       color: var(--muted);
       margin-bottom: 8px;
@@ -1093,9 +1177,9 @@
     }
 
     .modules-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .library-header {
@@ -1283,7 +1367,8 @@
       .stats { grid-template-columns: 1fr; gap: 8px; }
       .mini { padding: 12px; display: flex; align-items: center; justify-content: space-between; }
       .mini .num { font-size: 20px; }
-      .card { padding: 16px; border-radius: 20px; }
+      .card { border-radius: 14px; }
+      .branch-header { padding: 14px 16px; }
       .branch-header { flex-direction: column; gap: 14px; }
       .titlebox { align-items: flex-start; }
       .pct { font-size: 24px; }
@@ -1309,9 +1394,60 @@
         padding: 16px 20px;
       }
 
-      .modules-grid {
-        grid-template-columns: 1fr;
-      }
+      /* modules-grid already single col */
+    }
+
+    /* HINT BOX */
+    .hint-box {
+      margin: 0 0 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 184, 108, 0.25);
+      background: rgba(255, 184, 108, 0.06);
+      overflow: hidden;
+      transition: border-color .2s ease;
+    }
+    .hint-box.hint-open {
+      border-color: rgba(255, 184, 108, 0.45);
+    }
+    .hint-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--accent3);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-align: left;
+      transition: background .2s;
+    }
+    .hint-toggle:hover { background: rgba(255,184,108,0.08); }
+    .hint-icon { font-size: 16px; flex-shrink: 0; }
+    .hint-label { flex: 1; }
+    .hint-arrow {
+      font-size: 18px;
+      line-height: 1;
+      color: var(--muted);
+      transition: transform .25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .hint-box.hint-open .hint-arrow { transform: rotate(90deg); }
+    .hint-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease, padding .3s ease;
+      padding: 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .hint-box.hint-open .hint-content {
+      max-height: 200px;
+      padding: 0 16px 14px;
     }
   </style>
 </head>
@@ -1394,6 +1530,23 @@
           <div class="quest-step-number" id="stepNum">Шаг 1</div>
           <div class="quest-task-text" id="taskText">Loading...</div>
           <div class="quest-task-source" id="taskSource"></div>
+          <div id="hintBox" class="hint-box" style="display:none">
+            <button class="hint-toggle" onclick="toggleHint()">
+              <span class="hint-icon">💡</span>
+              <span class="hint-label">Подсказка</span>
+              <span class="hint-arrow">›</span>
+            </button>
+            <div class="hint-content" id="hintText"></div>
+          </div>
+          <div id="howToBox" class="howto-box" style="display:none">
+            <button class="howto-toggle" onclick="toggleHowTo()">
+              <span class="howto-toggle-icon">📋</span>
+              <span class="howto-toggle-label">Как выполнить</span>
+              <span class="howto-arrow">›</span>
+            </button>
+            <div class="howto-content" id="howToText"></div>
+          </div>
+
           <button class="quest-done-btn" id="questDoneBtn" data-stage="Старт" onclick="completeQuestStep()">✓ Готово</button>
         </div>
 
@@ -1420,6 +1573,787 @@
   </div>
 
 <script>
+const howToData = {
+  onboarding: [
+    [
+      "Загугли: «как устроена IT-компания структура отделов» или смотри видео на YouTube: «structure of IT company»",
+      "Найди картинку или диаграмму, где показаны отделы: Product, Tech, Design, QA, Marketing, Sales, Support",
+      "Прочитай кратко, за что отвечает каждый: Product решает «что делать», Tech делает код, Design рисует, QA ловит баги, Marketing привлекает людей, Sales продаёт, Support помогает клиентам",
+      "Нарисуй в тетради или в Notion простую схему, как эти отделы взаимодействуют",
+      "⚡ Возьми любое приложение (например, Telegram, Instagram) и на бумаге распиши, какой отдел за какую функцию отвечает (где система уведомлений? кто её делал? почему она так работает?)"
+    ],
+    [
+      "Загугли: «разница между PM и PO простыми словами» или смотри видео: «Product Manager vs Product Owner»",
+      "YouTube: найди объяснение ролей на русском: «BA QA Dev Designer в IT-компании»",
+      "Прочитай короче: PM думает о рынке и людях, PO думает о том, что делать в спринте, BA собирает требования, QA проверяет, Dev пишет код, Designer рисует",
+      "Найди видео: «где вписывается Project Assistant» или запрос вроде «junior project coordinator roles»",
+      "⚡ Напиши таблицу из 2 столбцов: роль и что она делает в день (например, PM проводит встречи и думает о будущем, Dev пишет код и ходит на standup)"
+    ],
+    [
+      "Загугли: «жизненный цикл задачи от идеи до запуска» или смотри видео: «как задача проходит через IT-компанию»",
+      "YouTube: найди объяснение: «Product Development Lifecycle» или «как работает спринт»",
+      "Поймите основные этапы: идея → планирование → разработка → тестирование → релиз → анализ результатов",
+      "Прочитай, почему задачи застревают: плохие требования, баги, зависимости от других задач, отпуска сотрудников",
+      "⚡ Нарисуй временную ленту любой фичи, которую ты используешь (например, новая кнопка в приложении): когда была идея, сколько времени разработка, когда вышла, как её потом улучшали"
+    ],
+    [
+      "Загугли: «IT-словарь для начинающих» или смотри Notion-документ с глоссарием",
+      "Выпиши в Notion или в Google Doc 50 слов: бэклог, спринт, скоуп, релиз, баг, фича, MVP, KPI, Agile, Scrum, Kanban, API, CRM, LTV, CAC, user story, epic, staging, prod, churn, DAU, MAU, conversion, retention",
+      "Напротив каждого слова напиши определение в одну строку простым языком (не копируй википедию, объясни сам)",
+      "YouTube: посмотри видео «Agile за 5 минут» или «Scrum для новичков»",
+      "⚡ Играй в игру: возьми 5 любых слов из списка и объясни их 15-летнему другу, не читая определение (проверь, что он понял)"
+    ],
+    [
+      "YouTube: найди видео «день Project Assistant» или «typical day in IT company»",
+      "Загугли: «что делает junior assistant в IT» и прочитай 1-2 статьи",
+      "Напиши расписание рабочего дня: начало дня (стендап), что делаешь до обеда, митинги, обед, после обеда, конец дня",
+      "Поймите инструменты: Jira (трекер задач) → Slack (чат) → Google Meet (встречи) → Google Docs (документы)",
+      "⚡ Создай в Notion шаблон своего рабочего дня Junior Assistant: часы, задачи, митинги, перерывы (реально распиши, как бы выглядел твой день)"
+    ],
+    [
+      "Загугли: «как писать сообщение коллеге в Slack» или смотри гайд «effective workplace communication»",
+      "Прочитай статью про структуру сообщения: контекст → просьба → срок → что уже сделано",
+      "Найди примеры плохого сообщения (неясное, без срока, без контекста) и хорошего (ясное, со всеми деталями)",
+      "YouTube: поищи видео про деловую переписку на русском или английском",
+      "⚡ Напиши 3 сообщения: коллеге из другого отдела, своему директору, клиенту — каждый раз разная структура и тон"
+    ],
+    [
+      "Загугли: «как понять задачу правильно» или смотри видео: «5 вопросов перед тем как начать работать»",
+      "Запомни 5 магических вопросов: ЧТО (что нужно сделать?) → ЗАЧЕМ (зачем нам это?) → КОМУ (кто это использует?) → КОГДА (когда нужно?) → ЧТО УЖЕ ЕСТЬ (что уже готово?)",
+      "Прочитай примеры, как эти вопросы снимают неопределённость (например: если ты просто начнёшь работать без вопросов, результат будет не тем)",
+      "YouTube: найди видео про clarification questions или requirements gathering",
+      "⚡ Возьми любую задачу (реальную из работы или придуманную) и ответь на все 5 вопросов письменно, как будто ты это объясняешь менеджеру"
+    ],
+    [
+      "Загугли: «Jira Notion Trello что это такое» и посмотри скриншоты каждого",
+      "YouTube: смотри туториалы: «Jira для новичков», «Notion базовое», «Trello как работает»",
+      "Изучи также: Confluence (вики и документы), Slack (чат компании), Google Sheets (таблицы), Figma (дизайн), Zoom (видеовстречи)",
+      "Создай себе бесплатные аккаунты: в Notion, Jira Cloud (free), Figma и поэкспериментируй",
+      "⚡ Создай простой проект в Notion или Jira: напиши 3 задачи, расставь статусы (To Do → In Progress → Done), добавь дедлайны"
+    ],
+    [
+      "Загугли: «что такое продукт в IT» или смотри видео: «product definition и product lifecycle»",
+      "Прочитай или посмотри, как работает цикл: проблема пользователя → идея → разработка → запуск → обратная связь → улучшение",
+      "Возьми конкретный пример (например, Яндекс.Карты): какую проблему они решают? → как они это сделали? → почему люди их используют?",
+      "YouTube: найди видео про «product thinking» или «как рождаются приложения»",
+      "⚡ Выбери 2 продукта (Telegram, Google Docs, Figma, любой) и напиши: какую боль они решают, кто их пользователь, почему это работает"
+    ],
+    [
+      "Загугли: «что нужно знать новичку в IT в первую неделю» или смотри статьи на Habr/Medium",
+      "Прочитай про типовые ошибки: не спрашивать вопросы, ждать указаний, молчать о проблемах, не писать в Slack",
+      "Найди примеры того, что нужно уметь: разбираться в задаче, предлагать варианты, общаться ясно, доводить дело до конца",
+      "YouTube: поищи видео про «first week in a new job» или адаптацию в IT",
+      "⚡ Напиши список из 7 дел, которые Junior Assistant ДОЛЖЕН сделать в первую неделю (например, познакомиться с командой, понять как работает Jira, прочитать гайды)"
+    ]
+  ],
+  theory: [
+    [
+      "Зайди на сайт notion.so и зарегистрируйся (бесплатно)",
+      "Загугли: «Notion для новичков на русском» и смотри видео или статью с примерами",
+      "YouTube: найди полный туториал «Как создать базу данных в Notion», смотри медленно и повторяй",
+      "Скачай себе готовые шаблоны Notion для продакта (есть на сайте Notion или на русских блогах)",
+      "Создай свою базу данных: таблица с проектами, поле для статусов, для сроков, для ответственных",
+      "⚡ Создай в Notion собственный Learning Hub: заводи туда все ссылки, книги, курсы которые проходишь, добавляй заметки по каждой"
+    ],
+    [
+      "Скачай книгу Р. Фитцпатрика «Спроси маму» (ищи PDF, аудиокнигу или покупай бумажную)",
+      "Прочитай первые 3 главы медленно и выпиши главные идеи в Notion",
+      "YouTube: найди видео-обзор книги или интервью с автором про кастдев",
+      "Выучи правильные вопросы для интервью пользователя: открытые вопросы, слушай активно, не навязывай своё мнение",
+      "⚡ Практика: проведи мини-интервью с 2 друзьями (20 минут каждое) по любому сервису, который они используют, выпиши инсайты"
+    ],
+    [
+      "Скачай книгу М. Ильяхова «Пиши, сокращай» (ищи в интернете или покупай)",
+      "Прочитай главу про деловую переписку и требования к текстам",
+      "YouTube: найди видео про структурированное письмо или деловую коммуникацию",
+      "Выпиши для себя 10 правил ясного письма: короче, активный голос, конкретные слова, нет воды",
+      "⚡ Переписи свои последние 3 служебных письма (или сообщения в чате) по правилам книги: убери воду, сделай короче, уточни смысл"
+    ],
+    [
+      "Скачай книгу М. Ильяхова «Ясно, понятно» или найди онлайн-версию",
+      "Прочитай про структурирование информации и как строить презентации",
+      "YouTube: поищи видео про структурированное мышление или логику презентации",
+      "Изучи фреймворк AIDA (Attention → Interest → Desire → Action) для структуры",
+      "⚡ Подготовь 5-минутную презентацию на любую тему (например, про продукт, что ты используешь) с правильной структурой и не более 7 слайдов"
+    ],
+    [
+      "Скачай роман Т. Демарко «Deadline. Роман об управлении проектами» (ищи электронный вариант или покупай)",
+      "Прочитай медленно, это роман, поэтому читается легко, но учит реальным навыкам управления",
+      "Выпиши главные уроки: люди → коммуникация → реальные сроки важнее плана → культура команды",
+      "YouTube: найди краткий обзор или разбор книги на русском",
+      "⚡ Напиши в Notion 5 главных идей из книги и как их можно применить в работе Project Assistant"
+    ],
+    [
+      "Загугли: «Agile vs Scrum vs Kanban простыми словами» или смотри видео на YouTube",
+      "YouTube: найди видео: «Agile за 10 минут», «Scrum для новичков», «Kanban как работает»",
+      "Прочитай: Agile — это философия, Scrum — конкретная методология со спринтами, Kanban — просто доска To Do → In Progress → Done",
+      "Нарисуй в Notion или на бумаге сравнительную таблицу: что есть в каждом, чем отличаются",
+      "⚡ Создай простой Kanban (в Trello или Notion) и добавь туда 10 своих дел: видишь ли ты ясно, что делаешь, что в работе, что готово?"
+    ],
+    [
+      "YouTube: найди курс или видео про построение презентаций (ищи: «presentation skills», «как делать хорошие слайды»)",
+      "Загугли: «presentation structure» и прочитай про AIDA, STORY BOW или простую структуру: проблема → решение → результат",
+      "Посмотри примеры хороших TED talks или презентаций известных людей (Steve Jobs, например) на YouTube",
+      "Изучи правило: 1 слайд = 1 идея, максимум текста — 6 строк, больше картинок и диаграмм",
+      "⚡ Сделай две версии презентации (5 слайдов) на одну тему: первая — плохая (текста много, нет логики), вторая — хорошая (структурирована, есть история)"
+    ],
+    [
+      "Загугли: «что такое CJM Customer Journey Map» и смотри видео на YouTube: «CJM для новичков»",
+      "Прочитай статью про этапы пути клиента: Awareness → Consideration → Purchase → Retention → Advocacy",
+      "Найди примеры реальных CJM (например, для интернет-магазина, приложения, SaaS)",
+      "YouTube: смотри видео «как построить Customer Journey Map пошагово»",
+      "⚡ Построй свой CJM для любого сервиса, который используешь: откуда узнал, как узнавал подробнее, как купил/зарегистрировался, как используешь, рекомендуешь ли"
+    ],
+    [
+      "Загугли: «User Story vs Job Story фреймворк JTBD» и смотри статьи",
+      "YouTube: найди видео про Jobs to Be Done теорию Clayten Christensen",
+      "Прочитай примеры: User Story = «Как пользователь я хочу чтобы...», Job Story = «Когда [ситуация] мне нужно [потребность] чтобы [результат]»",
+      "Поймите: Job Story лучше показывает контекст и почему пользователь что-то делает",
+      "⚡ Напиши 5 User Stories и переделай их в Job Stories (например, для приложения доставки еды): видишь ли разницу в глубине?"
+    ],
+    [
+      "Загугли: «базовые продуктовые метрики DAU MAU Retention LTV CAC» или смотри видео на YouTube",
+      "YouTube: найди видео: «продуктовые метрики за 10 минут» или «key product metrics explained»",
+      "Прочитай определения: DAU (ежедневные активные юзеры) → MAU (ежемесячные) → Retention (сколько вернулось) → Churn (сколько ушло) → LTV (lifetime value дохода от юзера) → CAC (сколько потратили на привлечение)",
+      "Найди примеры: как Spotify, Uber, Яндекс.Карты считают эти метрики",
+      "⚡ Возьми любой продукт (свой аккаунт там) и попробуй угадать его метрики: сколько юзеров, какой retention, может быть какой LTV? Пиши гипотезы"
+    ],
+    [
+      "Загугли: «SDLC Software Development Lifecycle для новичков» или смотри видео на YouTube",
+      "YouTube: найди видео: «как создаётся программа: этапы разработки» или «software development process»",
+      "Прочитай про этапы: Planning → Design → Development → Testing → Deployment → Maintenance",
+      "Поймите: для каждого этапа разные люди, разные временные рамки, и это ОЧЕНЬ важно для Project Assistant",
+      "⚡ Создай диаграмму (в Google Docs или на бумаге) жизненного цикла конкретной фичи (например, новая функция в Telegram) с указанием кто делает на каждом этапе"
+    ],
+    [
+      "Создай в Notion или Google Doc свой IT-словарь с определениями",
+      "Добавь слова: frontend, backend, API, релиз, баг, staging (тестовый сервер), prod (боевой сервер), deployment, migration, cache, CDN, SQL, REST, webhook",
+      "YouTube: смотри видео «IT-слова за 5 минут» или «tech terms for non-tech people»",
+      "Для каждого слова напиши: определение в одну строку + простой пример",
+      "⚡ Читай этот словарь 2-3 раза в неделю и добавляй новые слова по мере обучения (к концу курса будет 50+ слов)"
+    ],
+    [
+      "Загугли: «матрица приоритизации ICE RICE MoSCoW» и смотри видео на YouTube",
+      "YouTube: найди видео по каждой: «ICE Score для стартапов», «RICE framework», «MoSCoW method»",
+      "Прочитай: ICE = Impact × Confidence / Effort, RICE = Reach × Impact × Confidence / Effort, MoSCoW = Must/Should/Could/Won't",
+      "Найди примеры: как TikTok, YouTube или Figma приоритизируют фичи",
+      "⚡ Возьми 5-7 реальных фич (из продукта который используешь или из своих идей) и приоритизируй их по RICE и по MoSCoW: результаты совпадают? почему?"
+    ],
+    [
+      "Загугли: «как провести эффективную встречу» или смотри видео: «meeting best practices»",
+      "YouTube: найди видео про подготовку agenda, ведение встречи, написание follow-ups",
+      "Прочитай про структуру: до встречи (agenda) → встреча (agenda + notes + decisions) → после встречи (follow-up письмо)",
+      "Изучи правило: meeting = у каждого своя роль (модератор, note-taker, timekeeper, участники)",
+      "⚡ Подготовь реальную agenda для встречи (с кем угодно, любая тема), проведи встречу 20 минут, напиши follow-up письмо потом"
+    ],
+    [
+      "YouTube: найди видео про sales funnel или воронку продаж: «как строить воронки», «conversion funnel»",
+      "Загугли: «узкие горлышки в воронке продаж» и прочитай примеры",
+      "Прочитай про этапы: Awareness → Interest → Consideration → Purchase → Repeat → Advocacy",
+      "Изучи: на каком этапе какой % людей отваливается, где можно оптимизировать",
+      "⚡ Возьми любой продукт (приложение, сайт, услугу) и распиши его воронку: каким путём ходят юзеры, где их больше теряется, что может помочь?"
+    ],
+    [
+      "Загугли: «финтех основы PSP acquiring payouts» и прочитай статьи на Habr или VC.ru",
+      "YouTube: найди видео: «как работает платёж в интернете», «что такое процессинг платежей»",
+      "Прочитай простое объяснение: мерчант (продавец) → PSP (платёжный сервис) → банк → карта покупателя",
+      "Изучи: processing (обработка платежа) → settlement (зачисление денег на счёт мерчанта)",
+      "⚡ Нарисуй диаграмму: как проходит 1 платёж в интернет-магазине, указав все участников и сроки (например, платёж пришёл, обработался за 1 сек, потом за 2 дня зачислился на счёт)"
+    ],
+    [
+      "Загугли: «high-risk acquiring Adult Gambling Betting» и прочитай статьи",
+      "YouTube: найди видео про разные вертикали в финтехе и почему они сложнее",
+      "Прочитай: Adult, Gambling, Betting, Forex, Crypto — у них другие правила, выше комиссии, сложнее с банками",
+      "Изучи понятие: risk = вероятность fraud, chargebacks, регуляторные проблемы",
+      "⚡ Напиши сравнительную таблицу: обычный интернет-магазин vs Adult-магазин в финтехе (какие отличия, почему рискованнее, что сложнее)"
+    ],
+    [
+      "Загугли: «финтех-комплаенс KYC AML chargebacks для новичков» или смотри видео на YouTube",
+      "YouTube: найди видео: «что такое KYC», «AML и борьба с отмыванием денег простыми словами»",
+      "Прочитай: KYC (Know Your Customer) = процесс проверки кто ты и откуда деньги, AML (Anti-Money Laundering) = защита от отмывания денег",
+      "Изучи: Chargeback = когда клиент оспаривает платёж в своём банке, и деньги возвращаются",
+      "⚡ Напиши письмо новичку про KYC: почему компания просит документы, какие документы нужны, почему это безопасно"
+    ],
+    [
+      "Загугли: «как устроены статусы в Jira таски эпики спринты» или смотри видео на YouTube",
+      "YouTube: найди туториал: «Jira для новичков», обратив внимание на структуру Project → Epic → Story → Task",
+      "Прочитай: Epic (большая фича) → Story (одна историю/задача) → Task (подзадача), каждая имеет статус (To Do → In Progress → Done)",
+      "Изучи: Priority, Assignee, Due Date — это то, что Project Assistant часто трогает в Jira",
+      "⚡ Создай структуру в Jira или Notion: 1 Epic, 3-4 Stories, каждая с 2-3 Tasks, расставь статусы, приоритеты, дедлайны"
+    ],
+    [
+      "Скачай книгу Э. Голдратта «Цель» (ищи электронный вариант или покупай)",
+      "Прочитай первую часть медленно, это тоже роман, это про Theory of Constraints (ТОС)",
+      "Главная идея: в любом процессе есть ограничение (узкое место), всё остальное крутится вокруг него, нужно найти и оптимизировать это место",
+      "YouTube: найди видео: «Theory of Constraints объяснение» или краткий обзор книги",
+      "⚡ Найди узкое место в любом процессе (в компании, в своём обучении, в приложении): что его замедляет? как это исправить? напиши короткий анализ"
+    ]
+  ],
+  it_basics: [
+    [
+      "Загугли: «как работает интернет клиент сервер для новичков» или смотри видео на YouTube",
+      "YouTube: найди видео: «как устроен интернет простыми словами», обрати внимание на картинку клиент-сервер",
+      "Прочитай: ты пишешь адрес в браузере (клиент) → браузер отправляет запрос на сервер → сервер отправляет ответ (HTML, картинки, данные) → браузер показывает результат",
+      "Изучи: DNS (система, которая преобразует google.com в IP-адрес), HTTP (протокол общения), HTTPS (безопасная версия), SSL (шифрование)",
+      "⚡ Проследи путь одного запроса: открыл google.com → что произошло → получил результат. Напиши этапы с временем (DNS ~50мс, передача ~100мс, обработка ~200мс)"
+    ],
+    [
+      "Загугли: «Frontend vs Backend простыми словами» или смотри видео на YouTube",
+      "YouTube: найди видео: «что видит пользователь vs что под капотом»",
+      "Прочитай: Frontend = то что видишь ты (кнопки, текст, картинки, интерфейс), Backend = то что происходит на сервере (логика, база данных, обработка)",
+      "Пример: кликаешь на кнопку (frontend) → отправляется запрос (frontend + backend) → на сервере обрабатывается (backend) → результат отправляется (backend + frontend) → показывается на экране (frontend)",
+      "⚡ Возьми любое приложение (Google, Instagram, Uber) и распиши: что здесь frontend (что видишь), что backend (что не видишь)"
+    ],
+    [
+      "Загугли: «что такое API простыми словами» или смотри видео на YouTube",
+      "YouTube: найди видео: «API для новичков», «как приложение общается с сервером»",
+      "Прочитай: API = способ, как разные системы разговаривают друг с другом (как телефон или письмо, но для компьютеров)",
+      "Пример интернет-магазина: когда ты платишь → приложение отправляет запрос через API платёжной системы → платёжная система проверяет карту → отправляет ответ → деньги списались",
+      "⚡ Напиши диаграмму: как работает API на примере Яндекс.Карт (когда открываешь адрес, выбираешь маршрут, видишь время — всё это API запросы)"
+    ],
+    [
+      "Загугли: «базы данных для новичков» или смотри видео: «как хранятся данные в приложениях»",
+      "YouTube: найди видео: «SQL база данных простыми словами», «где хранятся твои данные»",
+      "Прочитай: база данных = большой файл (как Excel, но умнее), в которой хранятся все данные (пользователи, товары, платежи и т.д.)",
+      "Изучи: SQL = язык для общения с базой (как спрашиваешь у базы: «дай мне всех пользователей из Москвы»), миграция = обновление структуры базы (как добавить новый столбец в таблицу)",
+      "⚡ Создай в Google Sheets таблицу пользователей (Name, Email, Created At, Status) и напиши простые SQL запросы на русском: сколько активных пользователей, кто зарегистрировался на прошлой неделе"
+    ],
+    [
+      "Загугли: «dev staging production простыми словами» или смотри видео на YouTube",
+      "YouTube: найди видео: «релизный цикл software», «как приложение выходит в люди»",
+      "Прочитай: dev (разработчик пишет код и тестирует) → staging (копия продакшена, где тестируют ВСЕ перед релизом) → production (боевой сервер, где реальные пользователи)",
+      "Изучи: зачем тестировать перед релизом = чтобы баги не прошли в боевую систему и не сломали работу юзеров",
+      "⚡ Нарисуй процесс: разработчик написал новую фичу → она в dev → testing team тестирует в staging → если ОК → выпускает в production и смотрит на метрики"
+    ],
+    [
+      "Загугли: «Git контроль версий для новичков» или смотри видео на YouTube",
+      "YouTube: найди видео: «Git за 10 минут», «коммиты ветки мерджи»",
+      "Прочитай: Git = система, которая сохраняет все версии кода, как Time Machine для папки",
+      "Изучи: commit (сохранить изменения с комментарием, например «Добавил кнопку Оплатить»), branch (ветка, где разработчик работает отдельно), merge (объединение кода из разных веток)",
+      "⚡ Создай простой репозиторий на GitHub: добавь файл, сделай коммит, создай ветку, сделай изменение, забрани обратно в main (даже если не пишешь код, поймёшь как это работает)"
+    ],
+    [
+      "Загугли: «мобильная разработка native web PWA» или смотри видео на YouTube",
+      "YouTube: найди видео: «что лучше — native приложение или веб»",
+      "Прочитай: Native app (Telegram на iOS написан на Swift, на Android на Java) = работает быстро, использует все фишки телефона, но нужна разработка для каждой платформы",
+      "Web app (Twitter в браузере) = один код для всех, но медленнее, PWA (Progressive Web App, как Telegram Web) = гибрид, установляется как приложение, но в браузере",
+      "⚡ Скачай несколько приложений (Instagram, Telegram, Try Google Maps в браузере) и угадай: это native, web или PWA? как ты это понял?"
+    ],
+    [
+      "Загугли: «облачные сервисы AWS для новичков» или смотри видео на YouTube",
+      "YouTube: найди видео: «что такое облако», «AWS для начинающих»",
+      "Прочитай: облако = это не туча, это чужие мощные компьютеры в интернете (сервера Amazon, Google и т.д.), которые хранят твои данные и запускают приложения",
+      "Изучи: почему сайт лежит = отвалился один из серверов, uptime (сколько % времени сервис работал, например 99.9%), мигрция = переезд приложения на другой сервер",
+      "⚡ Найди 3 сервиса (Figma, Google Drive, Netflix) и уточни: на каких облаках они работают? (обычно на AWS, Google Cloud или Azure) как ты это узнал?"
+    ],
+    [
+      "Загугли: «HTTP коды ошибок 200 404 500 простыми словами» или смотри видео на YouTube",
+      "YouTube: найди видео: «HTTP status codes explained»",
+      "Прочитай: 200 (ОК, всё сработало) → 301 (перейти на новый адрес) → 404 (страница не найдена) → 500 (ошибка сервера) → 403 (доступ запрещён)",
+      "Изучи: как это помогает разбираться в багах = когда видишь 404, значит ссылка неправильная, когда 500 = проблема на сервере",
+      "⚡ Откройте Chrome DevTools (F12 → Network) и сделай 5 действий в приложении: какие коды видишь? что они означают? напиши логи"
+    ],
+    [
+      "Загугли: «безопасность в интернете токены авторизация шифрование» или смотри видео на YouTube",
+      "YouTube: найди видео: «как работает авторизация», «что такое токены»",
+      "Прочитай: токен = пропуск, который показывает серверу что ты это ты (как билет), авторизация (ты вводишь пароль) → сервер выдаёт тебе токен → при каждом запросе ты отправляешь токен",
+      "Изучи: шифрование = перевод данных в код, который не читается без ключа (как код Цезаря, но сложнее), HTTPS = весь трафик зашифрован",
+      "⚡ Проведи эксперимент: зайди на сайт по HTTP и по HTTPS (если найдёшь), посмотри в DevTools (Network → Headers) какие данные видны — в HTTPS увидишь шифрование"
+    ]
+  ],
+  base: [
+    [
+      "Загугли: «как разобрать задачу на части» или смотри видео: «task decomposition»",
+      "YouTube: найди видео про структурирование проблем или системный анализ",
+      "Прочитай: для любой задачи надо определить: цель (что нужно получить) → вводные (что я знаю) → ограничения (бюджет, время, люди) → шаги (как делать) → результат (как проверить)",
+      "Посмотри примеры: как разбирают задачу в Jira, как Project Manager ставит задачу разработчику",
+      "⚡ Возьми одну сложную задачу (реальную или придуманную) и распиши на листе: цель, вводные, ограничения, 5-6 шагов, критерии готовности"
+    ],
+    [
+      "Загугли: «важное vs срочное матрица Эйзенхауэра» или смотри видео на YouTube",
+      "YouTube: найди видео: «как расставить приоритеты», «important urgent matrix»",
+      "Прочитай: важное = влияет на результат (написать хорошую задачу), срочное = надо сразу (баг в продакшене), матрица показывает что делать первым",
+      "Изучи: важное + срочное (делать немедленно) → важное, не срочное (запланировать) → срочное, не важное (делегировать) → не важное, не срочное (потом или удалить)",
+      "⚡ Разложи все свои текущие задачи по матрице Эйзенхауэра и расставь реальный порядок: что будешь делать первым, когда это сделаешь?"
+    ],
+    [
+      "Загугли: «как избежать неопределённости в работе» или смотри видео про управление рисками",
+      "YouTube: найди видео: «как задавать правильные вопросы», «requirement gathering»",
+      "Прочитай: если ты не уверен что делать → надо сформулировать вопросы и найти ответы, а не сидеть и ждать",
+      "Изучи: техника: выписать все неясные моменты → сформулировать вопрос четко → спросить у нужного человека → документировать ответ",
+      "⚡ Возьми неясную задачу (реальную или придуманную) и напиши 7-10 уточняющих вопросов, потом ответь сам или спроси"
+    ],
+    [
+      "Загугли: «как устанавливать критерии готовности Acceptance Criteria» или смотри видео",
+      "YouTube: найди видео: «как писать Definition of Done», «criteria for success»",
+      "Прочитай: прежде чем начинать задачу, надо понять: а как я узнаю что это ГОТОВО? (как проверить качество, что не забыл)",
+      "Изучи: примеры критериев: фича должна работать быстрее чем за 1 секунду, ошибки должны логироваться, код должен протестирован, документирован",
+      "⚡ Напиши 3 задачи с Acceptance Criteria: для каждой определи что означает «готово» (не просто «сделать», а конкретный результат)"
+    ],
+    [
+      "Загугли: «как давать альтернативы вместо вопроса что делать» или смотри статьи про проактивность",
+      "YouTube: найди видео: «как быть более самостоятельным», «problem solving vs waiting for instructions»",
+      "Прочитай: плохой вопрос = «что мне делать?», хороший вопрос = «я вижу проблему X, вариант 1 это А, вариант 2 это Б, вариант 3 это В, кажется А лучше всего, согласен?»",
+      "Изучи: как это работает = ты экономишь время менеджера, показываешь что думаешь, менеджер может быстро решить",
+      "⚡ Возьми 3 реальные задачи и напиши для каждой: проблема, 2-3 решения, рекомендация → это написать как письмо коллеге"
+    ],
+    [
+      "Загугли: «ретроспектива что работало что нет» или смотри видео про постоянное улучшение",
+      "YouTube: найди видео: «как делать выводы после задачи», «lessons learned»",
+      "Прочитај: после каждой задачи надо выделить время и спросить себя: что сработало хорошо? что не сработало? что буду делать по-другому?",
+      "Изучи: это должно быть письменно, кратко (3-5 пунктов), должно содержать конкретные изменения",
+      "⚡ Напиши ретроспективу последней большой задачи которую делал: плюсы, минусы, что улучшить, как это применить к следующей задаче"
+    ]
+  ],
+  comms: [
+    [
+      "Загугли: «как писать кратко и ясно» или смотри видео про деловую переписку",
+      "YouTube: найди видео: «effective communication at work», «writing clearly»",
+      "Прочитай: кратко (избегай лишних слов) → ясно (конкретные слова, не размыто) → без воды (никаких «вообще», «понимаешь»)",
+      "Изучи: структура сообщения: кто (я), что (нужно сделать), когда (дедлайн), зачем (контекст), что уже есть",
+      "⚡ Переделай плохое сообщение (если нашёл в своём чате) на хорошее, или напиши 3 варианта: плохой, нормальный, отличный"
+    ],
+    [
+      "Загугли: «как подготовить agenda встречи» или смотри видео про проведение встреч",
+      "YouTube: найди видео: «meeting agenda best practices», «как проводить эффективные встречи»",
+      "Прочитај: до встречи надо написать: тема, цель, участники, время, что обсуждать (пункты), кто о чём говорит",
+      "Изучи: на встречу берёшь компьютер, пишешь решения в реальном времени (не потом вспоминаешь), даёшь слово каждому",
+      "⚡ Подготовь agenda для встречи на 30 минут (любая тема, любые люди) и напиши follow-up письмо: что решили, кто что делает дальше"
+    ],
+    [
+      "Загугли: «что такое handoff в работе» или смотри видео про передачу задач",
+      "YouTube: найди видео: «task handover», «how to hand off work»",
+      "Прочитај: handoff = когда задача переходит от одного человека к другому, нужно передать весь контекст чтобы другой смог продолжить",
+      "Изучи: что надо включить в handoff: что сделано, что осталось, какие были сложности, какие файлы нужны, кто дальше",
+      "⚡ Напиши handoff письмо для вымышленного коллеги: он должен закончить твою задачу, ему должна быть понятна ситуация полностью"
+    ],
+    [
+      "Загугли: «как общаться с разными людьми на работе» или смотри видео про коммуникацию",
+      "YouTube: найди видео: «communicating with different roles», «tech and non-tech communication»",
+      "Прочитај: Dev говорит технически, аналитик говорит про числа, дизайнер про UI, каждому надо объяснять на его языке",
+      "Изучи: приём: переиспользуй его слова, показывай метрики если говоришь с аналитиком, показывай дизайн если говоришь с дизайнером",
+      "⚡ Напиши одну идею для трёх разных людей: для разработчика, для маркетолога, для финансиста (разные углы, разные слова)"
+    ],
+    [
+      "Загугли: «как говорить о проблемах на работе» или смотри видео про трудные разговоры",
+      "YouTube: найди видео: «how to report problems at work», «escalation»",
+      "Прочитај: если что-то сломалось → надо сказать немедленно, не ждать, не молчать, не делать вид что всё хорошо",
+      "Изучи: как говорить: конкретно что сломалось, какой это имеет impact, когда это заметили, что предлагаешь",
+      "⚡ Напиши письмо про проблему (реальную или придуманную): что сломалось, когда заметили, что риски, что предлагаешь сделать"
+    ],
+    [
+      "Загугли: «как организовать документы и файлы на работе» или смотри видео про knowledge management",
+      "YouTube: найди видео: «документооборот в компании», «как организовать файлы»",
+      "Прочитај: все документы должны быть в одном месте (Confluence, Google Drive, Notion), с версионированием, с понятными названиями",
+      "Изучи: правила: версия в названии (v1, v2), дата последнего обновления, кто последний редактировал, архивировать старые документы",
+      "⚡ Организуй свой Learning Hub в Notion: все ссылки, документы, статьи по одной структуре, с красивыми названиями и датами"
+    ]
+  ],
+  project: [
+    [
+      "Загугли: «как писать хорошую задачу для разработчика» или смотри видео про requirements",
+      "YouTube: найди видео: «writing good user stories», «requirements specification»",
+      "Прочитај: хорошая задача имеет: цель (что достичь) → сценарий (как это должно работать) → критерии готовности (что проверять) → зачем (почему это нужно)",
+      "Изучи: примеры плохой задачи («сделай кнопку красивее») vs хорошей («кнопка Оплатить должна быть синяя #0066FF, размер 48x48, при клике открывать окно оплаты»)",
+      "⚡ Напиши 2 задачи для разработчика: одна с User Story, одна с технической спецификацией, обе должны быть ясными"
+    ],
+    [
+      "Загугли: «как планировать проект план работ» или смотри видео про project planning",
+      "YouTube: найди видео: «как составить план проекта», «Gantt chart», «dependency diagram»",
+      "Прочитај: план включает: список всех шагов → какие зависят друг от друга → примерное время → кто отвечает",
+      "Изучи: инструменты: Gantt (временная шкала), PERT (uncertainty в сроках), Critical Path (самый важный путь, который определяет всё)",
+      "⚡ Составь план для реального проекта (выпуск фичи, курс, путешествие): 10-15 шагов, зависимости, сроки, зависимости"
+    ],
+    [
+      "Загугли: «как вести статус проекта» или смотри видео про project tracking",
+      "YouTube: найди видео: «status reporting», «how to track project progress»",
+      "Прочитај: статус = что сделано, что в работе, что дальше → как отслеживается (обновлять каждый день, минимум раз в неделю)",
+      "Изучи: блокеры (что мешает) → как их видеть → как о них говорить → когда переговоры нужны",
+      "⚡ Ведите лист статуса проекта на 2 недели: каждый день обновляй что сделал, что в работе, есть ли блокеры"
+    ],
+    [
+      "Загугли: «как отслеживать задачи чтобы не потерять» или смотри видео про task management",
+      "YouTube: найди видео: «task tracking system», «как использовать трекер задач»",
+      "Прочитај: не надо полагаться на память → все задачи в одном месте (Jira, Notion, Trello) → каждый день проверяй что надо сделать → каждую неделю ревью",
+      "Изучи: напоминания, дедлайны, приоритеты в трекере → как видеть что срочно",
+      "⚡ Управляй своим проектом в Jira/Notion 2 недели: добавляй, обновляй, следи за сроками, проверяй дедлайны"
+    ],
+    [
+      "Загугли: «как видеть риски в проекте» или смотри видео про risk management",
+      "YouTube: найди видео: «project risks», «how to identify and report risks»",
+      "Прочитај: риск = что может пойти не так (уходит разработчик, не хватает времени, баги, непредвиденные сложности)",
+      "Изучи: как говорить о риске: конкретно что может произойти → когда это может случиться → какой impact → что делать чтобы предотвратить",
+      "⚡ Для своего текущего проекта распиши 5-7 рисков: что может случиться, когда, какой impact, как избежать или как минимизировать"
+    ],
+    [
+      "Загугли: «как довести проект до конца качественно» или смотри видео про quality assurance в управлении",
+      "YouTube: найди видео: «project delivery», «quality in project management»",
+      "Прочитај: надо следить не только за расписанием, но и за качеством результата → финальная проверка перед сдачей → тест в боевых условиях",
+      "Изучи: критерии качества для твоего проекта → как проверять → кто финально приёмает → что означает «готово к продакшену»",
+      "⚡ Напиши Acceptance Criteria для своего проекта: как ты поймёшь что результат хороший, как проверишь, что не забыл"
+    ]
+  ],
+  product: [
+    [
+      "Загугли: «как выявить боль пользователя» или смотри видео про customer pain points",
+      "YouTube: найди видео: «problem discovery», «how to find user pain»",
+      "Прочитај: боль = что не устраивает пользователя, что ему сложно, что занимает много времени (ищешь рестораны долго → Яндекс.Карты → 2 клика)",
+      "Изучи: как искать боли: интервью пользователей, смотреть на аналитику (где люди отваливаются), читать отзывы",
+      "⚡ Выбери 3 сервиса которые используешь и напиши: какую боль они решают, как бы это было без них, почему это боль людей"
+    ],
+    [
+      "Загугли: «Customer Journey Map CJM» или смотри видео про путь пользователя",
+      "YouTube: найди видео: «how to map user journey», «customer journey mapping»",
+      "Прочитај: путь пользователя = от того как он узнал о продукте → до постоянного использования → на каком этапе что происходит",
+      "Изучи: этапы: Awareness (узнал) → Interest (интересует) → Consideration (сравнивает с конкурентами) → Purchase (купил) → Retention (пользует потом) → Advocacy (рекомендует)",
+      "⚡ Построй CJM для продукта который используешь или для своего сервиса: все этапы, что на каждом, где люди отваливаются"
+    ],
+    [
+      "Загугли: «идея vs факт vs гипотеза в продакте» или смотри видео про data-driven decisions",
+      "YouTube: найди видео: «hypothesis vs fact», «data vs intuition in product»",
+      "Прочитај: идея = мне кажется что... (просто мнение) → факт = это произошло (данные) → гипотеза = я думаю что... потому что... (проверяемое предположение)",
+      "Изучи: как проверить гипотезу: A/B тест, интервью, аналитика, инсайты юзеров",
+      "⚡ Напиши 5 идей для продукта → переделай в гипотезы → напиши как их проверять (тест, опрос, аналитика)"
+    ],
+    [
+      "Загугли: «как проводить пользовательское интервью» или смотри видео про customer interviews",
+      "YouTube: найди видео: «user interview tips», «how to conduct interviews»",
+      "Прочитај: хорошее интервью = открытые вопросы, слушаешь, не перебиваешь, не навязываешь своё мнение, записываешь",
+      "Изучи: техника: планируешь вопросы → записываешь ответы → анализируешь потом → выписываешь инсайты",
+      "⚡ Проведи 3 минутных интервью с друзьями про любой сервис: видят ли они боли, что улучшить, напиши выводы"
+    ],
+    [
+      "Загугли: «как анализировать фидбэк от пользователей» или смотри видео про qualitative research",
+      "YouTube: найди видео: «feedback analysis», «thematic analysis of feedback»",
+      "Прочитај: много отзывов → надо выделить паттерны (что повторяется), что важно, что шум (жалобы одного человека)",
+      "Изучи: инструмент: выписываешь фидбэк → группируешь по темам → считаешь сколько раз повторилось → выводишь главные инсайты",
+      "⚡ Собери 20 отзывов с сайта или соцсетей про любой продукт → сгруппируй по темам → напиши топ-3 проблемы которые люди жалуются"
+    ],
+    [
+      "Загугли: «приоритизация фич RICE MoSCoW» или смотри видео про feature prioritization",
+      "YouTube: найди видео: «RICE framework», «how to prioritize features»",
+      "Прочитај: нельзя делать всё сразу → надо выбрать что сначала → опираться на данные и метрики, не на интуицию",
+      "Изучи: RICE = (Reach × Impact × Confidence) / Effort → каждой фиче даёшь баллы → выбираешь с наибольшим RICE",
+      "⚡ Возьми 10 фич (реальных или придуманных) и приоритизируй их по RICE: оцени каждый параметр, считай скор, расставь в порядке"
+    ]
+  ],
+  marketing: [
+    [
+      "Загугли: «воронка AIDA Awareness Interest Desire Action» или смотри видео на YouTube",
+      "YouTube: найди видео: «AIDA model for marketing», «funnel marketing»",
+      "Прочитај: Awareness (люди узнают о продукте) → Interest (интересуются) → Desire (хотят попробовать) → Action (покупают)",
+      "Изучи: где сейчас твой продукт на этой воронке и что нужно улучшить",
+      "⚡ Возьми любой продукт (телефон, приложение, услугу) и распиши: на каком этапе AIDA он сейчас находится, почему, что дальше"
+    ],
+    [
+      "Загугли: «каналы привлечения пользователей organic paid viral» или смотри видео про growth",
+      "YouTube: найди видео: «marketing channels», «acquisition channels»",
+      "Прочитај: Organic (люди находят сами через поиск, соцсети) → Paid (реклама в Google, Facebook) → Viral (друзья рекомендуют) → Partnership (интеграции) → Sales (продавцы)",
+      "Изучи: для каждого канала свой бюджет, свои метрики, своя ROI",
+      "⚡ Выбери продукт → напиши какие каналы он использует, сколько % трафика с каждого, какой ROI"
+    ],
+    [
+      "Загугли: «как позиционировать продукт» или смотри видео про product positioning",
+      "YouTube: найди видео: «positioning statement», «how to position your product»",
+      "Прочитај: позиционирование = для кого наш продукт → чем мы отличаемся → почему выбрать именно нас → простой слоган",
+      "Изучи: примеры: Uber = быстро, безопасно, везде; Apple = простота и дизайн; Figma = совместная работа в облаке",
+      "⚡ Напиши positioning statement для своего продукта (реального или придуманного): кто клиент, в чём уникальность, почему это крутого"
+    ],
+    [
+      "Загугли: «unit economics CAC LTV payback period» или смотри видео про финансику маркетинга",
+      "YouTube: найди видео: «CAC LTV ratio», «unit economics explained»",
+      "Прочитај: CAC (сколько потратили на привлечение одного клиента) → LTV (сколько выручки от клиента за его жизнь) → payback period (за сколько месяцев окупается трата)",
+      "Изучи: здоровая компания имеет LTV/CAC >= 3 (за каждый рубль на маркетинг получаешь 3 рубля дохода)",
+      "⚡ Посчитай для своей вымышленной компании: если CAC = 1000р, LTV = 5000р, сколько месяцев payback? сколько нужно клиентов на маржу?"
+    ],
+    [
+      "Загугли: «A/B тестирование как делать» или смотри видео про A/B testing",
+      "YouTube: найди видео: «A/B testing explained», «how to run A/B test»",
+      "Прочитај: A/B тест = делаешь две версии (A и B) → один % юзеров видит A, другой B → смотришь какая конвертит лучше",
+      "Изучи: как ставить гипотезу: «я думаю что синяя кнопка конвертит лучше чем красная потому что...» → метрика успеха → сколько нужно людей (sample size) → как долго (обычно 1-2 недели)",
+      "⚡ Спланируй A/B тест: гипотеза → две версии → метрика → length → что победитель → как применишь результат"
+    ],
+    [
+      "Загугли: «воронка продаж funnel sales» или смотри видео про sales funnel",
+      "YouTube: найди видео: «sales funnel optimization», «how to optimize conversion funnel»",
+      "Прочитај: воронка: Leads (потенциальные клиенты) → Qualified (подходят) → Proposal (предложение) → Deal (сделка) → Customer",
+      "Изучи: где люди отваливаются → как это улучшить → метрики на каждом этапе",
+      "⚡ Проанализируй воронку продаж: Awareness (10000) → Interest (5000) → Purchase (500) → Retention (100) - на каком этапе падение, что исправить?"
+    ],
+    [
+      "Загугли: «GTM Go To Market strategy» или смотри видео про GTM",
+      "YouTube: найди видео: «GTM strategy», «go to market plan»",
+      "Прочитај: GTM = план как вывести продукт на рынок → кому говорить → в какой порядке → какие каналы → какой timeline",
+      "Изучи: GTM для B2C (потребители) отличается от B2B (бизнес) → разные каналы, разные сроки",
+      "⚡ Напиши GTM план для нового продукта: целевая аудитория, каналы, timeline, метрики успеха, бюджет"
+    ],
+    [
+      "Загугли: «конкурентный анализ competitive analysis» или смотри видео про конкурентов",
+      "YouTube: найди видео: «competitive analysis framework», «how to analyze competitors»",
+      "Прочитај: смотришь что делают конкуренты → их сильные и слабые стороны → где ты можешь выигрывать",
+      "Изучи: матрица: что они делают хорошо → что они делают плохо → где у тебя возможность",
+      "⚡ Выбери 2-3 конкурента твоего продукта → сделай competitive analysis: их плюсы, минусы, где ты отличаешься"
+    ],
+    [
+      "Загугли: «retention churn почему люди уходят» или смотри видео про retention",
+      "YouTube: найди видео: «user retention», «reducing churn», «customer retention metrics\"",
+      "Прочитај: retention = % людей которые продолжают использовать → churn = % которые ушли → это важнее чем привлечение новых",
+      "Изучи: как улучшить: лучше onboarding, лучше product, удобнее, нужнее, премиум фичи",
+      "⚡ Для продукта вычислени retention по месяцам (придумай цифры): месяц 1 = 100%, месяц 2 = 80%, месяц 3 = 60% - что делать чтобы улучшить?"
+    ],
+    [
+      "Загугли: «анализ трафика веб-аналитика» или смотри видео про Google Analytics",
+      "YouTube: найди видео: «Google Analytics for beginners», «how to analyze traffic\"",
+      "Прочитај: откуда приходят люди (source) → кто конвертится (conversion by source) → где боль (drop-off)",
+      "Изучи: инструмент Google Analytics → какие отчёты смотреть → как выводить инсайты",
+      "⚡ Зайди в Google Analytics любого сайта (своего или известного) → посмотри откуда трафик → кто конвертится → где люди отваливаются → напиши выводы"
+    ]
+  ],
+  analytics: [
+    [
+      "Загугли: «базовые метрики DAU MAU Conversion Retention» или смотри видео про analytics",
+      "YouTube: найди видео: «key metrics in analytics», «product metrics explained\"",
+      "Прочитај: DAU = Daily Active Users (сколько пришло в день) → MAU = Monthly (в месяц) → Conversion = % который что-то сделал → Retention = вернулся потом → Churn = ушёл → LTV = доход → CAC = трата",
+      "Изучи: примеры: Instagram имеет 2млрд DAU, Telegram 700млн MAU, Tiktok высокий CAC но высокий LTV",
+      "⚡ Выбери продукт и гугли его метрики (если публичная компания) или угадай: DAU, MAU, Retention, Churn, LTV, CAC"
+    ],
+    [
+      "Загугли: «как сравнивать периоды неделя к неделе месяц к месяцу» или смотри видео про тренды",
+      "YouTube: найди видео: «period over period comparison», «analyzing trends\"",
+      "Прочитај: сравниваешь метрику неделю назад с этой неделей (Week over Week = WoW), месяц назад (Month over Month = MoM), год назад (Year over Year = YoY)",
+      "Изучи: как считать: (текущий период - предыдущий период) / предыдущий период × 100% = % изменения",
+      "⚡ Возьми вымышленные цифры (например DAU: неделя 1 = 1000, неделя 2 = 1200) и посчитай WoW, MoM, YoY изменения"
+    ],
+    [
+      "Загугли: «как читать таблицы и видеть выводы» или смотри видео про анализ данных",
+      "YouTube: найди видео: «data analysis skills», «interpreting data\"",
+      "Прочитај: смотришь таблицу → выделяешь что выросло → что упало → почему это может быть (корреляция → причина)",
+      "Изучи: техника: выделяешь anomalies → выказываешь гипотезы → проверяешь",
+      "⚡ Создай простую таблицу: день, DAU, Conversion, Revenue - проанализируй: что выросло, что упало, почему может быть"
+    ],
+    [
+      "Загугли: «что говорят разработчики: imput баги performance» или смотри видео про tech metrics",
+      "YouTube: найди видео: «technical metrics for non-technical people», «understanding backend metrics\"",
+      "Прочитај: импут (input) = что пришло на вход, баги = ошибки (как они влияют на метрики), performance = скорость (медленный сайт = меньше конверсии)",
+      "Изучи: примеры: если сайт грузится 5 сек → bounce rate выше → меньше конверсия",
+      "⚡ Напиши: если баг в системе оплаты на 1 час → как это скажется на метриках (revenue, conversion, DAU)"
+    ],
+    [
+      "Загугли: «как описать баг цифрами impact\" или смотри видео про quantifying problems",
+      "YouTube: найди видео: \"how to measure bug impact\", \"quantifying user problems\"",
+      "Прочитај: плохо: «сломана кнопка» → хорошо: «кнопка сломана на iOS, это 25% пользователей, revenue упал на $50K в день»",
+      "Изучи: техника: вычисляешь сколько пользователей затронуто → какой %» → какой финансовый impact",
+      "⚡ Напиши про баг количественно: что сломалось, сколько пользователей (%), какой impact (revenue, DAU, Conversion)"
+    ],
+    [
+      "Загугли: «UX-проблемы в аналитике drop-off bounce rate\" или смотри видео про UX analytics",
+      "YouTube: найди видео: \"measuring UX with analytics\", \"user drop-off analysis\"",
+      "Прочитај: drop-off = % который не дошёл до конца (например, из 100 кто зашли в оплату, 70 оплатили → drop-off 30%) → bounce rate = вышли сразу → время на странице",
+      "Изучи: если drop-off высокий → есть проблема (непонятный интерфейс, высокая цена, долгий процесс)",
+      "⚡ Проанализируй воронку: Page 1 (1000) → Page 2 (800) → Page 3 (400) → Success (100) - напиши где проблема и как её исправить"
+    ]
+  ],
+  domain: [
+    [
+      "Загугли: «платёжная система PSP acquiring что это\" или смотри видео про финтех",
+      "YouTube: найди видео: \"how payment processing works\", \"PSP explained\"",
+      "Прочитај: PSP (Payment Service Provider) = компания которая принимает платежи → acquiring = услуга приёма платежей → payouts = когда деньги зачисляются мерчанту",
+      "Изучи: путь платежа: покупатель → его банк → PSP/acquiring bank → мерчант → мерчант банк → мерчант счёт",
+      "⚡ Нарисуй диаграмму платежа: 4 этапа (authorization, clearing, settlement, payout) с временем каждого"
+    ],
+    [
+      "Загугли: \"комплаенс KYC Know Your Customer AML\" или смотри видео про финтех-регулирование",
+      "YouTube: найди видео: \"KYC AML explained\", \"know your customer requirements\"",
+      "Прочитај: KYC = процесс проверки кто человек и откуда деньги, нужны документы → AML = защита от отмывания денег → обязательное в финансовых компаниях",
+      "Изучи: почему это нужно: борьба с мошенничеством, с терроризмом, с коррупцией",
+      "⚡ Напиши KYC процесс для интернет-магазина: какие документы просишь, почему, как проверяешь, как это защищает"
+    ],
+    [
+      "Загугли: \"antifraud как защитить от мошенников\" или смотри видео про fraud prevention",
+      "YouTube: найди видео: \"payment fraud prevention\", \"chargeback explained\"",
+      "Прочитај: платежи падают (отклоняются) если система видит риск мошенничества → 3D-Secure = дополнительная проверка → chargeback = когда клиент оспаривает платёж в банке",
+      "Изучи: примеры: заказ с Москвы а карта США → риск → может быть отклонено или 3D-Secure",
+      "⚡ Напиши правила fraud detection: какие сигналы риска (сумма, страна, новая карта, скорость платежей)"
+    ],
+    [
+      "Загугли: \"high-risk вертикали Adult Gambling Betting почему сложнее\" или смотри видео про high-risk",
+      "YouTube: найди видео: \"high-risk payments explained\", \"adult industry payments\"",
+      "Прочитај: Adult, Gambling, Betting, Forex, Crypto = high-risk вертикали потому что: много chargebacks, много fraud, много регуляторных проблем, сложнее с банками",
+      "Изучи: у них другие PSP, выше комиссии, строже KYC, нужны специальные лицензии",
+      "⚡ Сравни: обычный магазин vs Adult shop (комиссии, KYC, документы, статистика fraud, сложность)"
+    ],
+    [
+      "Загугли: \"onboarding мерчанта в платёжную систему\" или смотри видео про merchant onboarding",
+      "YouTube: найди видео: \"merchant onboarding process\", \"payment processor requirements\"",
+      "Прочитај: когда мерчант регистрируется → просишь документы → проверяешь → даёшь API ключи → мерчант интегрирует → тестирует → выходит в продакшен",
+      "Изучи: difference: merchant = который продаёт товары, platform = которая даёт услугу нескольким мерчантам (как Avito, Wildberries)",
+      "⚡ Напиши onboarding документ для мерчанта: какие документы, какие шаги, как получить API, как интегрировать"
+    ],
+    [
+      "Загугли: \"как устроен платёжный продукт от A до Z\" или смотри видео про платёжный сервис",
+      "YouTube: найди видео: \"payment product walkthrough\", \"inside a payment company\"",
+      "Прочитај: регистрация мерчанта → KYC → integration (мерчант подключает API) → тесты → live payments → reconciliation (сверка что пришло)",
+      "Изучи: для мерчанта: dashboard (смотрит свои платежи), reports (скачивает отчёты), payout (зачисление денег)",
+      "⚡ Напиши пошаговый путь платежа в платёжном продукте: регистрация → платёж → settlement → payout (все сроки, статусы, риски)"
+    ]
+  ],
+  ai_bonus: [
+    [
+      "Загугли: \"как писать хорошие промпты для ChatGPT\" или смотри видео про prompt engineering",
+      "YouTube: найди видео: \"prompt engineering tips\", \"how to write better prompts\"",
+      "Прочитај: хороший промпт имеет: контекст (что я хочу) → формат (в каком виде) → примеры (как это должно выглядеть) → constraints (ограничения)",
+      "Изучи: примеры: плохо = «напиши текст» → хорошо = «напиши продакт дескрипшн для кредитной карты, 150 слов, для молодежи 18-25, тон casual, структура: проблема → решение → ЦТА»",
+      "⚡ Напиши 3 промпта для ChatGPT: первый плохой, второй нормальный, третий отличный (один на одну тему, например маркетинг или анализ)"
+    ],
+    [
+      "Загугли: \"AI в customer support content generation recommendations\" или смотри видео про AI в продаксе",
+      "YouTube: найди видео: \"AI use cases in product\", \"machine learning in apps\"",
+      "Прочитај: Customer support = AI чат-бот отвечает на вопросы → content generation = AI пишет текст → recommendations = AI рекомендует товары/контент (как в Netflix или Spotify)",
+      "Изучи: примеры: Telegram может генерировать описания, TikTok рекомендует видео, Google Play рекомендует приложения",
+      "⚡ Напиши как AI может помочь в твоём продукте: где можно использовать чат-бот, генерацию, рекомендации"
+    ],
+    [
+      "Загугли: \"этика AI bias in algorithms прозрачность\" или смотри видео про этику AI",
+      "YouTube: найди видео: \"AI ethics\", \"bias in machine learning\"",
+      "Прочитај: bias = когда AI дискриминирует по полу, расе, возрасту → transparency = людям нужно знать что решает AI → когда AI недостаточно нужен человек",
+      "Изучи: примеры проблем: Amazon AI дискриминировала женщин при найме, Facebook AI показывала разную рекламу разным расам",
+      "⚡ Напиши этические гайдлайны для AI в твоём продукте: как избежать bias, как быть прозрачным, когда нужен человек"
+    ],
+    [
+      "Загугли: \"ChatGPT vs Claude vs Perplexity когда какой использовать\" или смотри видео про AI инструменты",
+      "YouTube: найди видео: \"AI tools comparison\", \"ChatGPT vs competitors\"",
+      "Прочитај: ChatGPT = самый популярный, хорош для всего → Claude = хорош для анализа и длинного контента → Perplexity = хороша для поиска свежей информации",
+      "Изучи: когда что выбирать: для быстрого текста = ChatGPT, для анализа документов = Claude, для свежих новостей = Perplexity",
+      "⚡ Попробуй все три инструмента: дай одинаковый промпт, сравни результаты, напиши когда какой лучше"
+    ],
+    [
+      "Загугли: \"генерирование идей с помощью AI brainstorming\" или смотри видео про creativity и AI",
+      "YouTube: найди видео: \"using AI for brainstorming\", \"creative ideation with ChatGPT\"",
+      "Прочитај: техника: просишь AI сгенерировать 50 идей → потом отсеиваешь → потом развиваешь лучшие → AI как помощник, не как решение",
+      "Изучи: примеры: генерируешь названия продуктов → выбираешь 5 лучших → доверяешь людям окончательный выбор",
+      "⚡ Сгенерируй с AI 30 идей для фичи твоего продукта → выбери 5 лучших → развей 1 идею подробнее (задача, решение, результат)"
+    ]
+  ]
+};
+
+const hintsData = {
+  'onboarding': [
+    'Представь, что тебе нужно объяснить структуру знакомому. Нарисуй схему — какой отдел за что болит?',
+    'Попробуй не гуглить, а угадать разницу между PM и PO. Потом проверь — удивишься насколько близко.',
+    'Возьми любую задачу из жизни и пройди её по шагам: кто придумал, кто согласовал, кто сделал, кто проверил?',
+    'Не старайся запомнить всё сразу. Выбери 10 слов, которых точно не знаешь — и разберись только с ними.',
+    'Попробуй записать свой типичный день прямо сейчас — потом сравни, насколько он отличается от IT-дня.',
+    'Напиши коллеге сообщение прямо сейчас по структуре. Не идеально — просто попробуй.',
+    'Когда получишь задачу — задай хотя бы один уточняющий вопрос. Один — это уже лучше, чем ноль.',
+    'Зарегистрируйся в Notion. Просто открой и создай одну страницу. Больше ничего — это уже старт.',
+    'Возьми продукт, которым пользуешься каждый день. Спроси себя: какую проблему он решает без меня?',
+    'Не думай о всей неделе сразу. Что одно ты можешь сделать в первый день, чтобы быть полезным?'
+  ],
+  'theory': [
+    'Просто создай первую страницу в Notion прямо сейчас. Не думай о структуре — начни с чего угодно.',
+    'Читая "Спроси маму" — запиши один плохой вопрос который ты обычно задаёшь. Как его улучшить?',
+    'Выбери один текст который ты написал. Попробуй сократить его вдвое. Что осталось — то и главное.',
+    'Возьми сложную идею. Можешь ли ты объяснить её тремя простыми предложениями? Попробуй.',
+    'В "Deadline" Демарко — найди момент, когда менеджер сделал ошибку. Ты делаешь так же?',
+    'Agile, Scrum, Kanban — чем они отличаются? Попробуй объяснить это как три разных способа готовить ужин.',
+    'Открой любую презентацию. Что ты убрал бы с первого слайда, чтобы он стал сильнее?',
+    'Нарисуй CJM для себя как пользователя — последний раз, когда ты что-то купил онлайн.',
+    'User Story vs Job Story — в чём разница? Подсказка: один про действие, другой — про контекст.',
+    'Выбери один продукт. Какая у него retention — люди возвращаются или нет? Почему?',
+    'SDLC — нарисуй этапы как круговую схему. Где обычно возникают задержки?',
+    'Frontend, backend, API — объясни разницу на примере заказа пиццы. Кто кухня, кто сайт, кто курьер?',
+    'ICE, RICE, MoSCoW — возьми список задач и попробуй приоритизировать хотя бы одним методом.',
+    'Какой была последняя встреча без agenda? Что было бы по-другому, если бы она была?',
+    'Нарисуй воронку любого продукта. Где самый большой "провал"? Что там происходит?',
+    'Что такое PSP простыми словами? Подсказка: он стоит между продавцом и банком.',
+    'High-risk — почему это не просто "опасно", а конкретная категория риска для банка? Что за этим стоит?',
+    'KYC ты уже проходил — когда верифицировал аккаунт. Что именно проверяют и зачем?',
+    'Нарисуй жизнь задачи в таск-трекере: какие статусы, кто меняет, что происходит при блокере?',
+    '"Цель" Голдратта — найди "узкое горлышко" в своём рабочем процессе. Где всё замедляется?'
+  ],
+  'it_basics': [
+    'Когда ты пишешь google.com — что происходит? Попробуй проговорить это вслух, шаг за шагом.',
+    'Открой любой сайт. Что из того, что ты видишь — frontend? А что работает невидимо — backend?',
+    'API — это как официант в ресторане. Кто кухня? Кто гость? Что официант передаёт туда и обратно?',
+    'Где хранятся твои контакты в телефоне? Вот это и есть база данных. Что будет если её потерять?',
+    'Зачем проверять на staging, если всё работает на dev? Придумай сценарий, где staging спасает.',
+    'Git — это как "история изменений" в Google Docs. Что было бы, если бы у кода не было такой истории?',
+    'Ты пользуешься нативным приложением или веб-версией? Открой оба — почему они ведут себя по-разному?',
+    'Когда сайт "лежит" — кто виноват? Попробуй составить список возможных причин.',
+    'В следующий раз когда увидишь ошибку — запомни цифру. 404, 500 — что это говорит о проблеме?',
+    'Зачем нужен пароль? А токен? Попробуй объяснить разницу так, чтобы понял ребёнок.'
+  ],
+  'base': [
+    'Возьми любую задачу прямо сейчас и напиши: цель, вводные, что мешает, шаги, результат. Пять строк.',
+    'Напиши список дел на сегодня. Теперь поставь рядом с каждым: важное или срочное? Видишь разницу?',
+    'Когда не знаешь что делать — напиши три вопроса, ответы на которые помогут двинуться дальше.',
+    'Перед тем как начать задачу — напиши одним предложением как будет выглядеть хороший результат.',
+    'Получил задачу "непонятно что делать"? Напиши три варианта как можно её решить. Потом выбери.',
+    'После любой задачи задай себе: что я сделал бы иначе в следующий раз? Одна строка — и хватит.'
+  ],
+  'comms': [
+    'Возьми своё последнее рабочее сообщение. Можно ли его сократить вдвое без потери смысла?',
+    'Запиши три вопроса перед следующей встречей. Сравни — совпадают ли они с тем, что обсуждали?',
+    'Попробуй написать summary прошедшего разговора в 5 предложениях. Отправь участникам — проверь реакцию.',
+    'Представь, что объясняешь одну задачу трём людям: техарю, менеджеру и новичку. Как меняется язык?',
+    'Вспомни момент, когда ты замолчал о проблеме. Что было бы, если бы ты сказал раньше?',
+    'Открой любую рабочую папку. Можешь ли ты найти нужный документ за 30 секунд? Если нет — почему?'
+  ],
+  'project': [
+    'Возьми любую задачу и напиши: что должно получиться, как проверить что готово, зачем это нужно.',
+    'Составь план на 3 шага для самой простой задачи рядом с тобой. Кто делает каждый шаг?',
+    'Посмотри на список своих задач — у всех ли есть статус? Какой статус у задачи которую ты забыл?',
+    'Выбери одну незакрытую задачу. Когда ты последний раз о ней напомнил? Напомни прямо сейчас.',
+    'Что может пойти не так в задаче, которую ты сейчас ведёшь? Назови одну вещь и скажи об этом.',
+    'Сделанная задача — это не когда ты отправил, а когда другой получил и подтвердил. Чувствуешь разницу?'
+  ],
+  'product': [
+    'Возьми любую фичу продукта и спроси: от какой боли она избавляет? Что было бы, если её убрать?',
+    'Попробуй пройти путь пользователя в продукте с нуля. Где ты завис? Где было непонятно?',
+    'Посмотри на гипотезу — это факт или предположение? Как ты это докажешь или опровергнешь?',
+    'Если бы тебе нужно было провести интервью — что бы ты спросил? Напиши 3 вопроса без слова "нравится".',
+    'Выбери один отзыв пользователя. Что за этим стоит реально — что они хотели, но не смогли?',
+    'Есть ли у тебя список фич? Попробуй расставить их по двум осям: impact и effort. Что выходит вперёд?'
+  ],
+  'marketing': [
+    'Где сейчас твой продукт в воронке AIDA? Большинство людей о нём знают — или нет?',
+    'Через какой канал ты сам узнал о чём-то полезном последний раз? Это и есть рабочий канал.',
+    'Объясни продукт в одном предложении: для кого, что решает, почему именно он. Попробуй.',
+    'CAC и LTV — считал ли кто-то это для твоего продукта? Как понять — окупается ли клиент?',
+    'Что бы ты изменил в одном элементе на лендинге? Это и есть A/B гипотеза. Сформулируй её.',
+    'Где в воронке больше всего людей уходит? Посмотри на данные — там и точка роста.',
+    'Если завтра запускаешь новый продукт — кому ты позвонишь первым и что скажешь?',
+    'Выбери конкурента. Что они делают лучше тебя? Что ты делаешь лучше? Будь честен.',
+    'Почему уходят пользователи — ты знаешь ответ или только предполагаешь? Как узнать точнее?',
+    'Открой аналитику. Откуда приходит больше всего трафика — и конвертируется ли он лучше других?'
+  ],
+  'analytics': [
+    'Посмотри на любую метрику. Что было на прошлой неделе? Выросла или упала — и почему, как думаешь?',
+    'Сравни два периода в любом отчёте. Что изменилось? Это закономерность или случайность?',
+    'Глядя на таблицу — назови одно наблюдение вслух. Не вывод, а то что видишь. Потом объясни почему.',
+    'Разработчик сказал "перформанс упал". Как ты это переведёшь в цифры для нетехнического менеджера?',
+    'Опиши любой баг цифрами: сколько пользователей затронуто, какая метрика изменилась, на сколько?',
+    'Найди место в продукте с высоким drop-off. Почему люди уходят именно там — три версии?',
+    'Возьми любой findings из данных. Как объяснить его бабушке — без терминов, с примером из жизни?'
+  ],
+  'domain': [
+    'Представь что ты платишь картой онлайн. Назови 5 участников этой цепочки — кто они и что делают?',
+    'KYC — это когда банк просит паспорт. Почему они это просят и что будет если не проверить?',
+    'Chargeback — покупатель оспорил платёж. Кто теряет деньги и почему это так больно для продавца?',
+    'Почему казино или сайт для взрослых не может просто открыть счёт в обычном банке?',
+    'Мерчант просит документы при онбординге. Зачем каждый из них нужен — попробуй угадать логику.',
+    'Нарисуй жизненный цикл платежа на нашем продукте: от регистрации до выплаты. Где точки боли?',
+    'Когда compliance говорит "нет" — это не просто бюрократия. Какой риск за этим стоит на самом деле?'
+  ],
+  'ai_bonus': [
+    'Попробуй написать один prompt с контекстом, форматом и примером. Сравни ответ с обычным вопросом.',
+    'Вспомни задачу, где ты трать много времени. Мог ли AI взять на себя хотя бы часть работы?',
+    'AI ошибается. Приведи пример когда лучше перепроверить самому — и когда можно доверять.',
+    'Открой два AI-инструмента и задай один и тот же вопрос. Что разного в ответах?',
+    'Попробуй сгенерировать 10 идей с AI. Сколько из них реально полезны? Как ты отсеял остальные?'
+  ]
+};
+
 // Quest Line Sequence
 const questLine = [
   { block: 'onboarding', idx: 0, stage: 'Старт' },
@@ -1893,16 +2827,19 @@ function blockTemplate(block) {
         <div class="titlebox">
           <div class="icon">${block.icon}</div>
           <div>
-            <h3>${block.title}</h3>
-            <p class="desc">${block.desc}</p>
+            <h3 style="margin:0 0 3px;font-size:17px;line-height:1.25">${block.title}</h3>
+            <p class="desc" style="font-size:13px;margin:0;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden">${block.desc}</p>
           </div>
         </div>
-        <div style="display:flex;align-items:center;gap:12px">
+        <div class="accordion-meta">
           ${allDone ? `<div class="completion-badge" id="badge-${block.id}">✓</div>` : ''}
+          <div class="accordion-mini-bar"><div class="accordion-mini-fill" style="width:${progressPct}%"></div></div>
+          <div class="accordion-pct" id="pct-meta-${block.id}">${progressPct}%</div>
+          <div class="accordion-count">${block.items.length} пунктов</div>
           <div class="chevron">▶</div>
         </div>
       </div>
-
+      <div class="collapsible-content-divider"></div>
       <div class="collapsible-content">
         <div class="block-progress">
           <div class="small-track"><div class="small-fill" id="fill-${block.id}" style="width:${progressPct}%"></div></div>
@@ -1981,6 +2918,33 @@ function renderQuestSection() {
   document.getElementById('questDoneBtn').setAttribute('data-stage', currentStep.stage);
   document.getElementById('questDoneBtn').textContent = `✓ Готово`;
 
+  // Hint
+  const hintBox = document.getElementById('hintBox');
+  const hintText = document.getElementById('hintText');
+  const blockHints = hintsData[currentStep.block];
+  const hint = blockHints && blockHints[currentStep.idx] ? blockHints[currentStep.idx] : null;
+  if (hint) {
+    hintText.textContent = hint;
+    hintBox.style.display = 'block';
+    hintBox.classList.remove('hint-open');
+  } else {
+    hintBox.style.display = 'none';
+  }
+
+  // HOW TO BOX
+  const howToBox = document.getElementById('howToBox');
+  const howToText = document.getElementById('howToText');
+  const blockHowTo = howToData[currentStep.block];
+  const howTo = blockHowTo && blockHowTo[currentStep.idx] ? blockHowTo[currentStep.idx] : null;
+  if (howTo) {
+    howToText.innerHTML = '<ol>' + howTo.map(item => `<li>${item}</li>`).join('') + '</ol>';
+    howToBox.style.display = 'block';
+    howToBox.classList.remove('howto-open');
+  } else {
+    howToBox.style.display = 'none';
+  }
+
+
   // Upcoming
   let upcomingHtml = '';
   for (let i = 1; i <= 3 && currentIdx + i < questLine.length; i++) {
@@ -2015,6 +2979,8 @@ function toggleCompletedList(e) {
 function renderModules() {
   const container = document.getElementById('modulesGrid');
   container.innerHTML = blockOrder.map(blockId => blockTemplate(blockDataMap[blockId])).join('');
+  // Start all collapsed
+  container.querySelectorAll('.card').forEach(c => c.classList.add('collapsed'));
   const bonusHtml = blockTemplate(bonusBlock);
   container.insertAdjacentHTML('afterend', `<div style="grid-column:1/-1">${bonusHtml}</div>`);
 }
@@ -2133,6 +3099,10 @@ window.updateAppProgress = function() {
     const badgeEl = document.getElementById(`badge-${block.id}`);
     if (pctEl) pctEl.textContent = `${pct}%`;
     if (fillEl) fillEl.style.width = `${pct}%`;
+    const metaPctEl = document.getElementById(`pct-meta-${block.id}`);
+    if (metaPctEl) metaPctEl.textContent = `${pct}%`;
+    const miniBar = document.querySelector(`.card[data-block="${block.id}"] .accordion-mini-fill`);
+    if (miniBar) miniBar.style.width = `${pct}%`;
     if (badgeEl) badgeEl.style.display = isComplete ? 'flex' : 'none';
   });
 
@@ -2165,6 +3135,17 @@ window.updateAppProgress = function() {
     showToast('Ты прошла всё! 🏆');
   }
 };
+
+function toggleHint() {
+  const box = document.getElementById('hintBox');
+  box.classList.toggle('hint-open');
+}
+
+function toggleHowTo() {
+  const box = document.getElementById('howToBox');
+  box.classList.toggle('howto-open');
+}
+
 
 function toggleCollapse(headerEl) {
   const card = headerEl.closest('.card');
